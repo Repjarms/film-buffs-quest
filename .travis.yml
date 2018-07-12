@@ -1,0 +1,25 @@
+language: node_js
+sudo: required
+node_js:
+  - "8"
+cache:
+  directories:
+    "node_modules"
+services:
+  - docker
+before_install:
+  - npm i -g npm@6.1.0
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker build -t repjarms/film-buff-quest .
+  - docker run -d -p 127.0.0.1:80:4567 repjarms/film-buff-quest /bin/sh -c "cd /root/film-buff-quest; npm i; npm test"
+  - docker ps -a
+install:
+  - npm ci
+  - npm run build
+script:
+  - npm test
+after_success:
+- if [ "$TRAVIS_BRANCH" == "master" ]; then
+  docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+  docker push repjarms/film-buff-quest;
+  fi

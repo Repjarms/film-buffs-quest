@@ -1,0 +1,62 @@
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  font-family: 'Press Start 2P', 'cursive';
+  color: gray;
+
+  display: grid;
+  grid-template-columns: 50px 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+  grid-template-rows: 5% auto;
+}
+
+.header {
+  position: sticky;
+  grid-column: 1 / span 8;
+  background: gray;
+  color: black;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inner-content {
+  grid-column: 2 / 8;
+}
+
+.message-list {
+  overflow-y: scroll;
+}
+
+.message-list, .text-input {
+  margin: 1% 2%;
+}
+
+.message {
+  padding: 1% 0;
+}
+
+.system-message {
+   color: green;
+}
+
+.text-input {
+   display: flex;
+   align-items: center;
+   flex-wrap: nowrap;
+}
+
+.text-input::before, .user-message::before {
+  content: ">";
+  color: gray;
+}

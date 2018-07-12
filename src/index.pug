@@ -1,0 +1,20 @@
+html(lang="en")
+  head
+    title A Film Buff's Quest
+    meta(name='description', content='A film buff\'s quest')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='main.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Press+Start+2P')
+  body
+    div#app.app
+      header.header
+        div.inner-content
+          span West of House
+          span Bags: 0
+          span#move-counter Moves: 0
+      div#message-list.message-list.inner-content
+        p A Film Buff's Quest
+        p By Restructor Games
+      div.text-input.inner-content
+        input#main-input(type="text", autoFocus)
+    script(src='main.bundle.js')
